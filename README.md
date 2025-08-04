@@ -8,7 +8,7 @@
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 
 
-<details> <summary>Contents to be done</summary>
+ <summary>Contents to be done</summary>
 
 - [ ] [🎯Pipeline Overview](#-Pipeline-Overview)
 - [ ] [✨ Features](#-features)
@@ -24,7 +24,7 @@
 - [ ] [🤝 Contributing](#-contributing)
 - [ ] [📄 License](#-license)
 
-</details>
+
 
 ## 📋 Table of Contents
 
