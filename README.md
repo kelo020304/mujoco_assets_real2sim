@@ -12,7 +12,7 @@
 
 - [ ] [🎯Pipeline Overview](#-Pipeline-Overview)
 - [ ] [✨ Features](#-features)
-- [x] [🚀 Installation](#-installation)
+- [x] [🚀 Prerequisites](#-Prerequisites)
 - [ ] [🎬 Step 1: Video Capture](#-step-1-video-capture)
 - [ ] [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
 - [ ] [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
@@ -30,7 +30,7 @@
 
 - [🎯Pipeline Overview](#-Pipeline-Overview)
 - [✨ Features](#-features)
-- [🚀 Installation](#-installation)
+- [🚀 Prerequisites](#-Prerequisites)
 - [🎬 Step 1: Video Capture](#-step-1-video-capture)
 - [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
 - [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
