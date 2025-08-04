@@ -44,7 +44,6 @@ This repo mainly rely on followin repos, please follow the installation request 
 
 
 ```bash
-# 
 # Pre-built binaries
 sudo apt update
 sudo apt install colmap
@@ -59,7 +58,42 @@ sudo ninja install
 ```
 
 
-- segement anything
+#### 🎯 Segment Anything Model (SAM)
+
+**Official Repository**: [facebookresearch/segment-anything](https://github.com/facebookresearch/segment-anything)
+
+<summary><strong>🐧 Linux (Ubuntu/Debian)</strong></summary>
+
+> [!NOTE]
+> You can create a conda env to install and The code requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8`.
+
+Install Segment Anything:
+
+```bash
+pip install git+https://github.com/facebookresearch/segment-anything.git
+```
+
+or clone the repository locally and install with
+
+```bash
+git clone git@github.com:facebookresearch/segment-anything.git
+cd segment-anything; pip install -e .
+```
+
+The following optional dependencies are necessary for mask post-processing, saving masks in COCO format, the example notebooks, and exporting the model in ONNX format. `jupyter` is also required to run the example notebooks.
+
+```bash
+pip install opencv-python pycocotools matplotlib onnxruntime onnx
+```
+
+> [!TIP]
+> Please make sure to download a [model checkpoint](#model-checkpoints). 
+
+
+
+
+
+
 - Sugar 
 
 ## 📊 Pipeline Overview
