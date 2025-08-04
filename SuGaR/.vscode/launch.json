@@ -1,0 +1,37 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/train_full_pipeline.py",
+            "console": "integratedTerminal",
+            "args": [
+                    "-s", 
+                    "/home/jiziheng/Music/robot/gs_scene/gs_hs/model_asserts/3dgs_asserts/robot/chassis/sugar",
+                    "-r",
+                    "dn_consistency",
+                    "--gs_output_dir",
+                    "/home/jiziheng/Music/robot/gs_scene/gs_hs/model_asserts/3dgs_asserts/robot/chassis/sugar",
+                    "--export_obj",
+                    "True",  
+                    "--export_ply",
+                    "True",
+                    "--low_poly",
+                    "False",     
+                    "--high_poly", 
+                    "True",
+                    "-b",
+                    "-0.51,-0.69,-0.69",
+                    "-B",
+                    "0.39,0.69,0.69"
+
+
+            ]
+        }
+    ]
+}
