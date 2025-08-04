@@ -7,9 +7,6 @@
 [![COLMAP](https://img.shields.io/badge/COLMAP-3.6+-orange.svg)](https://colmap.github.io/)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 
-
- <summary>Contents to be done</summary>
-
 - [ ] [🎯Pipeline Overview](#-Pipeline-Overview)
 - [ ] [✨ Features](#-features)
 - [x] [🚀 Prerequisites](#-Prerequisites)
