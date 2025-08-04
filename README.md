@@ -39,7 +39,7 @@ This repo mainly rely on followin repos, please follow the installation request 
 <details>
 <summary><strong>🐧 Linux (Ubuntu/Debian)</strong></summary>
 
-> [!Warning]
+> [!WARNING]
 > I am not sure installation below can work, please check colmap repo for precise installation
 
 
@@ -57,6 +57,7 @@ cmake .. -GNinja
 ninja
 sudo ninja install
 ```
+</details>
 
 - segement anything
 - Sugar 
