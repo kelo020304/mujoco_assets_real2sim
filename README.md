@@ -9,6 +9,7 @@
 
 
 <details> <summary>Contents to be done</summary>
+
 - [ ] [🎯Pipeline Overview](#-Pipeline-Overview)
 - [ ] [✨ Features](#-features)
 - [x] [🚀 Installation](#-installation)
@@ -22,6 +23,7 @@
 - [ ] [🛠️ Troubleshooting](#️-troubleshooting)
 - [ ] [🤝 Contributing](#-contributing)
 - [ ] [📄 License](#-license)
+
 </details>
 
 ## 📋 Table of Contents
