@@ -87,14 +87,63 @@ pip install opencv-python pycocotools matplotlib onnxruntime onnx
 ```
 
 > [!TIP]
-> Please make sure to download a [model checkpoint](#model-checkpoints). 
+> Please make sure to download a [model checkpoint](#model-checkpoints). If you want other checkpoints, please check SAM repo.
 
+#### 🍰SuGaR (Surface-Aligned Gaussian Splatting)
+**Official Repository**:[Anttwo/SuGaR](https://github.com/Anttwo/SuGaR)
 
+<summary><strong>🐧 Linux (Ubuntu/Debian)</strong></summary>
 
+> [!NOTE]
+> You can use the same conda env with SAM while you need to make sure all dependencies are all compatiable, or you can just create a new conda env
 
+Intstall SuGaR:
 
+- Easy Installation :
 
-- Sugar 
+    ```bash
+    # HTTPS
+    git clone https://github.com/Anttwo/SuGaR.git --recursive
+    # or
+    # SSH
+    git clone git@github.com:Anttwo/SuGaR.git --recursive
+    ```
+
+    Then run the script
+    ``` python
+    python install.py
+    ```
+- Manual Installation
+    ```bash
+    # if you want to use a new conda env, you can just run:
+    conda env create -f environment.yml
+    conda activate sugar
+    # If you want to use the sam env, you need to install packages in environment.yml manually
+    ```
+    ```bash
+    # if you can not create env with environment.yml
+    conda create --name sugar -y python=3.9
+    conda activate sugar
+    conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+    conda install -c fvcore -c iopath -c conda-forge fvcore iopath
+    conda install pytorch3d==0.7.4 -c pytorch3d
+    conda install -c plotly plotly
+    conda install -c conda-forge rich
+    conda install -c conda-forge plyfile==0.8.1
+    conda install -c conda-forge jupyterlab
+    conda install -c conda-forge nodejs
+    conda install -c conda-forge ipywidgets
+    pip install open3d
+    pip install --upgrade PyMCubes
+    ```
+    ```bash
+    cd gaussian_splatting/submodules/diff-gaussian-rasterization/
+    pip install -e .
+    cd ../simple-knn/
+    pip install -e .
+    cd ../../../
+    ```
+
 
 ## 📊 Pipeline Overview
 
