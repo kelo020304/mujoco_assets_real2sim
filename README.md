@@ -1,6 +1,4 @@
 # 🌍 Real-World to MuJoCo: Physical Asset Reconstruction Pipeline
-> [!WARNING]
-> I am not sure installation below can work, please check colmap repo for precise installation
 
 > Transform real-world objects into high-quality MuJoCo physics assets through advanced 3D reconstruction techniques
 
@@ -38,11 +36,10 @@ This repo mainly rely on followin repos, please follow the installation request 
 ####  🏗️ COLMAP
 
 **Official Repository**: [colmap/colmap](https://github.com/colmap/colmap)
-<details>
+
 <summary><strong>🐧 Linux (Ubuntu/Debian)</strong></summary>
-
-
-
+> [!WARNING]
+> I am not sure installation below can work, please check colmap repo for precise installation
 
 
 ```bash
@@ -59,7 +56,7 @@ cmake .. -GNinja
 ninja
 sudo ninja install
 ```
-</details>
+
 
 - segement anything
 - Sugar 
