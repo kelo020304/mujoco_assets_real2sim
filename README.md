@@ -7,12 +7,14 @@
 [![COLMAP](https://img.shields.io/badge/COLMAP-3.6+-orange.svg)](https://colmap.github.io/)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 
+- [ ] [🎯Pipeline Overview](#-Pipeline-Overview)
+- [ ] [✨ Features](#-features)
+
 ## 📋 Table of Contents
 
-- [🎯 Overview](#-overview)
+- [🎯Pipeline Overview](#-Pipeline-Overview)
 - [✨ Features](#-features)
 - [🚀 Installation](#-installation)
-- [📊 Pipeline Overview](#-pipeline-overview)
 - [🎬 Step 1: Video Capture](#-step-1-video-capture)
 - [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
 - [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
@@ -25,7 +27,9 @@
 - [📄 License](#-license)
 
 ## 📊 Pipeline Overview
-[ ] To be done
+
+
+
 ## ✨ Features
 
 ## 🚀 Prerequisites
