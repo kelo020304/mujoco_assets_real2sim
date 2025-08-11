@@ -170,45 +170,9 @@ Intstall SuGaR:
 
 ## 🎬 Step 1: Video Capture
 
-### 📝 Overview
-
-### 📋 Prerequisites
-
-#### Hardware Requirements
-
-#### Software Requirements
-
-### 📹 Equipment Setup
-
-#### 🎥 Camera Configuration
-
-#### 💡 Lighting Setup
-
-### 🎥 Recording Techniques
-
-#### 🔄 Circular Pattern Recording
-
-#### 📐 Multi-angle Coverage
-
-#### 🎯 Focus and Framing
-
-### 📊 Quality Assessment
-
-#### ✅ Quality Checklist
-
-#### 🔧 Automated Quality Check
-
-### 💡 Tips & Best Practices
-
-#### ✅ Do's
-
-#### ❌ Don'ts
-
-### 🔧 Processing Commands
-
-### 🐛 Common Issues
-
-### 📁 Output Structure
+> **Please use your smartphone**  
+> to record a video of the object that needs **physical reconstruction**.  
+> For best results, ensure good lighting and capture the object from multiple angles.
 
 ---
 
