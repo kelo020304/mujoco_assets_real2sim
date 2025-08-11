@@ -184,10 +184,10 @@ After recording the video, you need to first make a folder of your objects and m
 ffmpeg -i 1.mp4 -q:v 1 -vf "fps=2" input/image_%04d.png
 ```
 The structure of the folder is like:
-
+```
 Objects  
 └── input
-
+```
 ---
 
 ## 🏗️ Step 2: COLMAP Initialization
@@ -200,17 +200,17 @@ python convert.py -s Objects # make sure there is a input folder in your Objects
 ```
 After running this command, you will get the initial COLMAP data.
 Rearrange the folder structure as follows:
-
+```
 Objects   
 ├── input  
 ├── images   
 ├── sparse  
-│    └── 0   
+│      └── 0  
 │        ├──cameras.bin  
 │        ├──images.bin  
 │        └──Points3D.bin  
 └── distorted  
-
+```
 > [!NOTE]
 > - images and sparse is the most important contents get from colmap
 > - Please make sure that there are enough images in 'images'folder
@@ -221,6 +221,7 @@ Next, convert all .bin files to .txt format for easier reading and editing:
 python read_write_model.py --input_model Objects/sparse/0 --output_model Objects/sparse/0 --input_format .bin --output_format .txt
 ```
 After conversion, the folder structure will look like this:
+```
 Objects   
 ├── input  
 ├── images   
@@ -233,6 +234,7 @@ Objects
 │        ├──images.txt  
 │        └──Points3D.txt  
 └── distorted  
+```
 And if you want, you can delete all .bin format files after conversion
 
 ---
