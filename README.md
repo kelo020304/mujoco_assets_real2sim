@@ -185,289 +185,74 @@ ffmpeg -i 1.mp4 -q:v 1 -vf "fps=2" input/image_%04d.png
 ```
 The structure of the folder is like:
 
-Objects
-
+Objects  
 └── input
 
 ---
 
 ## 🏗️ Step 2: COLMAP Initialization
 
-### 📝 Overview
+> **This step uses the Python scripts from the original 3DGS repository.**  
+> Please make sure you have **COLMAP** installed.
 
-### 📋 Prerequisites
+```bash
+python convert.py -s Objects # make sure there is a input folder in your Objects folder
+```
+After running this command, you will get the initial COLMAP data.
+Rearrange the folder structure as follows:
 
-#### System Requirements
+Objects   
+├── input  
+├── images   
+├── sparse  
+│    └── 0   
+│        ├──cameras.bin  
+│        ├──images.bin  
+│        └──Points3D.bin  
+└── distorted  
 
-#### Dependencies
+> [!NOTE]
+> - images and sparse is the most important contents get from colmap
+> - Please make sure that there are enough images in 'images'folder
 
-### 🔧 Installation & Setup
+Next, convert all .bin files to .txt format for easier reading and editing:
 
-#### COLMAP Installation
-
-#### Environment Configuration
-
-### 📷 Feature Extraction
-
-#### Image Preprocessing
-
-#### Feature Detection Parameters
-
-#### Extraction Commands
-
-### 🔗 Feature Matching
-
-#### Matching Strategy
-
-#### Parameter Tuning
-
-#### Matching Commands
-
-### 🏗️ Sparse Reconstruction
-
-#### Bundle Adjustment
-
-#### Camera Calibration
-
-#### Point Cloud Generation
-
-### 📊 Quality Validation
-
-#### Reconstruction Metrics
-
-#### Visual Inspection
-
-#### Error Analysis
-
-### 🔧 Processing Commands
-
-### 🐛 Common Issues
-
-### 📁 Output Structure
+```bash
+python read_write_model.py --input_model Objects/sparse/0 --output_model Objects/sparse/0 --input_format .bin --output_format .txt
+```
+After conversion, the folder structure will look like this:
+Objects   
+├── input  
+├── images   
+├── sparse  
+│    └── 0   
+│        ├──cameras.bin  
+│        ├──images.bin  
+│        ├──Points3D.bin  
+│        ├──cameras.txt  
+│        ├──images.txt  
+│        └──Points3D.txt  
+└── distorted  
+And if you want, you can delete all .bin format files after conversion
 
 ---
 
 ## 🎨 Step 3: SAM+CLIP Segmentation
 
-### 📝 Overview
 
-### 📋 Prerequisites
-
-#### Model Requirements
-
-#### Hardware Specifications
-
-### 🔧 Installation & Setup
-
-#### SAM Installation
-
-#### CLIP Installation
-
-#### Model Downloads
-
-### 🤖 SAM Segmentation
-
-#### Model Configuration
-
-#### Mask Generation
-
-#### Parameter Tuning
-
-### 🎯 CLIP Classification
-
-#### Object Detection
-
-#### Category Filtering
-
-#### Confidence Thresholds
-
-### 🖼️ Mask Processing
-
-#### Mask Refinement
-
-#### Multi-frame Consistency
-
-#### Quality Control
-
-### 🔄 Batch Processing
-
-#### Automated Pipeline
-
-#### Parallel Processing
-
-#### Memory Management
-
-### 🔧 Processing Commands
-
-### 🐛 Common Issues
-
-### 📁 Output Structure
 
 ---
 
 ## 🔄 Step 4: COLMAP Data Reconstruction
 
-### 📝 Overview
-
-### 📋 Prerequisites
-
-#### Input Requirements
-
-#### Processing Environment
-
-### 🔧 Data Preparation
-
-#### Mask Integration
-
-#### Image Filtering
-
-#### Quality Assessment
-
-### 🏗️ Dense Reconstruction
-
-#### Stereo Reconstruction
-
-#### Depth Map Generation
-
-#### Point Cloud Densification
-
-### 🎯 Point Cloud Processing
-
-#### Filtering Techniques
-
-#### Noise Removal
-
-#### Density Optimization
-
-### 📊 Quality Enhancement
-
-#### Outlier Detection
-
-#### Surface Smoothing
-
-#### Completeness Check
-
-### 🔧 Processing Commands
-
-### 🐛 Common Issues
-
-### 📁 Output Structure
 
 ---
 
 ## 🍰 Step 5: SuGaR Mesh Reconstruction
 
-### 📝 Overview
-
-### 📋 Prerequisites
-
-#### System Requirements
-
-#### GPU Specifications
-
-### 🔧 Installation & Setup
-
-#### SuGaR Installation
-
-#### Environment Configuration
-
-#### Model Preparation
-
-### 🍰 Mesh Generation
-
-#### Training Configuration
-
-#### Parameter Optimization
-
-#### Iteration Control
-
-### 🎨 Mesh Refinement
-
-#### Surface Smoothing
-
-#### Topology Optimization
-
-#### Detail Enhancement
-
-### 📊 Quality Assessment
-
-#### Mesh Metrics
-
-#### Visual Inspection
-
-#### Geometric Validation
-
-### ⚡ Performance Optimization
-
-#### Memory Management
-
-#### GPU Utilization
-
-#### Training Acceleration
-
-### 🔧 Processing Commands
-
-### 🐛 Common Issues
-
-### 📁 Output Structure
-
 ---
 
 ## 🎨 Step 6: Post-processing
-
-### 📝 Overview
-
-### 📋 Prerequisites
-
-#### Software Requirements
-
-#### Input Validation
-
-### 🔧 Mesh Processing
-
-#### Cleaning Operations
-
-#### Topology Repair
-
-#### Decimation Strategies
-
-### 📏 Scale Calibration
-
-#### Reference Measurements
-
-#### Unit Conversion
-
-#### Validation Methods
-
-### 🎨 Material Assignment
-
-#### Physical Properties
-
-#### Texture Mapping
-
-#### Material Libraries
-
-### ⚙️ MuJoCo Integration
-
-#### XML Generation
-
-#### Collision Geometry
-
-#### Inertial Properties
-
-### ✅ Final Validation
-
-#### Physics Testing
-
-#### Simulation Verification
-
-#### Quality Metrics
-
-### 🔧 Processing Commands
-
-### 🐛 Common Issues
-
-### 📁 Output Structure
 
 ---
 
