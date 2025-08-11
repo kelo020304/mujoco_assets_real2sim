@@ -170,9 +170,23 @@ Intstall SuGaR:
 
 ## 🎬 Step 1: Video Capture
 
-> **Please use your smartphone**  
-> to record a video of the object that needs **physical reconstruction**.  
-> For best results, ensure good lighting and capture the object from multiple angles.
+> **Please use your smartphone** 
+
+to record a video of the object that needs **physical reconstruction**.  
+For best results, ensure good lighting and capture the object from multiple angles.
+> [!NOTE]
+> - Do not change the focal length while recording
+> - Try to capture multiple viewpoints of the object, but ensure the entire object is always visible in the video.
+
+After recording the video, you need to first make a folder of your objects and make a 'input' folder in it and then run command below to form initial pictures
+
+```bash
+ffmpeg -i 1.mp4 -q:v 1 -vf "fps=2" input/image_%04d.png
+```
+The structure of the folder is like:
+
+Objects
+└── input
 
 ---
 
