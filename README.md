@@ -10,42 +10,41 @@
 <summary> Contents to be done </summary>
 
 - [ ] [🎯Pipeline Overview](#-Pipeline-Overview)
-- [ ] [✨ Features](#-features)
 - [x] [🚀 Prerequisites](#-Prerequisites)
-- [ ] [🎬 Step 1: Video Capture](#-step-1-video-capture)
-- [ ] [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
-- [ ] [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
-- [ ] [🔄 Step 4: COLMAP Data Reconstruction](#-step-4-colmap-data-reconstruction)
-- [ ] [🍰 Step 5: SuGaR Mesh Reconstruction](#-step-5-sugar-mesh-reconstruction)
-- [ ] [🎨 Step 6: Post-processing](#-step-6-post-processing)
-- [ ] [📚 Examples](#-examples)
+- [x] [🎬 Step 1: Video Capture](#-step-1-video-capture)
+- [x] [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
+- [x] [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
+- [x] [🔄 Step 4: COLMAP Data Reconstruction](#-step-4-colmap-data-reconstruction)
+- [x] [🍰 Step 5: SuGaR Mesh Reconstruction](#-step-5-sugar-mesh-reconstruction)
+- [x] [🎨 Step 6: Post-processing](#-step-6-post-processing)
+- [ ] [📚 Blender Fix Process](#-examples)
 - [ ] [🛠️ Troubleshooting](#️-troubleshooting)
-- [ ] [🤝 Contributing](#-contributing)
-- [ ] [📄 License](#-license)
 
 
 
 ## 📋 Table of Contents
 
-- [🎯Pipeline Overview](#-Pipeline-Overview)
-- [✨ Features](#-features)
-- [🚀 Prerequisites](#-Prerequisites)
-- [🎬 Step 1: Video Capture](#-step-1-video-capture)
-- [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
-- [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
-- [🔄 Step 4: COLMAP Data Reconstruction](#-step-4-colmap-data-reconstruction)
-- [🍰 Step 5: SuGaR Mesh Reconstruction](#-step-5-sugar-mesh-reconstruction)
-- [🎨 Step 6: Post-processing](#-step-6-post-processing)
-- [📚 Examples](#-examples)
-- [🛠️ Troubleshooting](#️-troubleshooting)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+- [🌍 Real-World to MuJoCo: Physical Asset Reconstruction Pipeline](#-real-world-to-mujoco-physical-asset-reconstruction-pipeline)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [📊 Pipeline Overview](#-pipeline-overview)
+  - [🚀 Prerequisites](#-prerequisites)
+      - [🏗️ COLMAP](#️-colmap)
+      - [🎯 Segment Anything Model (SAM)](#-segment-anything-model-sam)
+      - [🍰SuGaR (Surface-Aligned Gaussian Splatting)](#sugar-surface-aligned-gaussian-splatting)
+  - [🎬 Step 1: Video Capture](#-step-1-video-capture)
+  - [🏗️ Step 2: COLMAP Initialization](#️-step-2-colmap-initialization)
+  - [🎨 Step 3: SAM+CLIP Segmentation](#-step-3-samclip-segmentation)
+  - [🔄 Step 4: COLMAP Data Reconstruction](#-step-4-colmap-data-reconstruction)
+  - [🍰 Step 5: SuGaR Mesh Reconstruction](#-step-5-sugar-mesh-reconstruction)
+  - [🎨 Step 6: Post-processing](#-step-6-post-processing)
+  - [📚 Blender Fix Process](#-blender-fix-process)
+  - [🛠️ Troubleshooting](#️-troubleshooting)
+  - [🤝 Contributing](#-contributing)
+  - [📄 License](#-license)
+
+
 
 ## 📊 Pipeline Overview
-
-
-
-## ✨ Features
 
 ## 🚀 Prerequisites
 This repo mainly rely on followin repos, please follow the installation request of repose listed below
@@ -240,25 +239,138 @@ And if you want, you can delete all .bin format files after conversion
 ---
 
 ## 🎨 Step 3: SAM+CLIP Segmentation
+> **In this step, we use Segment Anything and CLIP to generate masks and corresponding images with a white background.**
 
+```bash
+python mask_clip.py \
+  --image_dir  Objects/images \
+  --output_dir  Objects/images_seg \
+  --sam_checkpoint ./ckpts/sam_vit_h_4b8939.pth \
+  --model_type  vit_h \
+  --device      cuda
+```
+After running this command, you will get the following updated folder structure:
 
+```bash
+Objects   
+├── input  
+├── images   
+├── sparse  
+│    └── 0   
+│        ├──cameras.bin  
+│        ├──images.bin  
+│        ├──Points3D.bin  
+│        ├──cameras.txt  
+│        ├──images.txt  
+│        └──Points3D.txt 
+├──images_seg
+│  ├──masks  
+│  └──rgb_whitebg  
+├──vis_result
+│  ├──validation_imgs...\
+│  ├──Points3D.txt \
+│  ├──filtered_points.ply \    
+│  └──filtered_points.bin 
+└── distorted  
+```   n_obs_steps: int = 2
+    horizon: int = 16
+    n_action_steps: int = 8
+Some validation images will be generated for visualizing point cloud filtering.    
+The **Points3D.txt** file is the most important output.
+The **filtered_points.ply** file can be used for visualization in CloudCompare.  
+```
 
 ---
 
 ## 🔄 Step 4: COLMAP Data Reconstruction
+> **IN this step, rearrange the new colmap data structure**
+```bash
+python recolmap.py \
+  --source_dir Object/ \
+  --dest_root  /your/new/path/to/colmap/data/ \
+  --object_name Your_asset_name
+```
+After running this command, you will obtain a new COLMAP dataset containing the filtered point clouds and white-background images, organized as follows:
 
+```bash
+Your_asset_name
+├── sparse  
+│    └── 0 
+│        ├──cameras.txt  
+│        ├──images.txt  
+│        ├──Points3D.ply
+│        └──Points3D.txt 
+└── images  
+```
 
 ---
 
 ## 🍰 Step 5: SuGaR Mesh Reconstruction
+> **In this step, using SuGaR to reconstruct the mesh of asset**
+
+```bash
+python train_full_pipeline.py \
+  -s Path/to/your/Your_asset_name/ \
+  -r "density" \
+  -l 0.1 \
+  --postprocess_mesh True \
+  --export_ply True \
+  --export_obj True
+  ```
+> [!WARNING]
+> - '-l' param only can be 0.1 0.3 0.5
+> - '-r' param only can be 'density', 'dn_consistency', 'sdf' , But density achieve better results during my experiments
+> '--postprocess_mesh' param is weather to postprocess mesh which will get smoother mesh, and you can change hyper param in the file **sugar_extractors/coarse_mesh.py**: `poisson_depth = 7`  , `vertices_density_quantile = 0`  
+> - where **poisson_depth** is default to 10 but you can modify it to 6 or 7 if mesh has too mush holes and  **vertices_density_quantile** defalut to 0.1 but you can change it to 0 
+> - More detailed params, you can check in file `train.py` and `train_full_pipeline.py`
+
+Results will be in folder `SuGaR/output`
+```bash
+SuGaR/output 
+├── coarse
+├── coarse_mesh
+├── refined
+├── refined_mesh
+│      ├──object1
+│      └──object2...
+├── refine_ply
+└── vanilla_gs
+```
+> [!NOTE]
+> The mesh of assets are in the folder `refined_mesh` with .mtl extension
+
+Then move all files in `refined_mesh/your_object` to `Your_asset_name/obj`:
+```bash
+Your_asset_name
+├── sparse  
+│    └── 0 
+│        ├──cameras.txt  
+│        ├──images.txt  
+│        ├──Points3D.ply
+│        └──Points3D.txt 
+├── obj
+│   ├──Your_asset_name.mtl 
+│   ├──Your_asset_name.obj  
+│   └──Your_asset_name.png 
+└── images
+```
 
 ---
 
 ## 🎨 Step 6: Post-processing
+> **In this step, process the reconstructed mesh into `.xml` extension for mujoco usage**
+
+> [!WARNING]
+> Please make sure `obj2mjcf` installed
+
+```bash
+python flip_obj/generate_mjcf.py --obj-dir Your_asset_name/obj/ --model-name Your_asset_name
+```
+Then you will get `Your_asset_name.xml` in `Your_asset_name/obj/Your_asset_name`
 
 ---
 
-## 📚 Examples
+## 📚 Blender Fix Process
 
 ## 🛠️ Troubleshooting
 
